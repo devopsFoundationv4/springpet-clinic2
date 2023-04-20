@@ -5,6 +5,7 @@ plugins {
 }
 
 apply plugin: 'java'
+apply plugin: 'org.springframework.boot'
 
 group = 'org.springframework.samples'
 version = '2.6.0'
