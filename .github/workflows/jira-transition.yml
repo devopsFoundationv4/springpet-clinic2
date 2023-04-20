@@ -28,4 +28,4 @@ jobs:
       uses: atlassian/gajira-transition@master
       with:
         issue: ${{ steps.getIssue.outputs.issue }}
-        transition: "2"
+        transition: "UAT"
