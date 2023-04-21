@@ -30,3 +30,26 @@ jobs:
       with:
         name: Jar compilado
         path: build/libs
+   
+  ValidateJira:
+    runs-on: ubuntu-20.04
+    steps:
+    
+    - name: Login
+      uses: atlassian/gajira-login@v3
+      env:
+        JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}
+        JIRA_USER_EMAIL: ${{ secrets.JIRA_USER_EMAIL }}
+        JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
+   
+    - name: Find issue in branch
+      id: getIssue
+      uses: atlassian/gajira-find-issue-key@v3
+      with:
+        string: DF-4
+        
+    - name: Transition issue
+      uses: atlassian/gajira-transition@master
+      with:
+        issue: ${{ steps.getIssue.outputs.issue }}
+        transition: "UAT"
