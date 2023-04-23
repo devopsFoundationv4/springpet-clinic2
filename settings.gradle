@@ -4,4 +4,4 @@ pluginManagement {
         gradlePluginPortal()
     }
 }
-rootProject.name = 'spring-petclinic'
+rootProject.name = 'java-web'
